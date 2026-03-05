@@ -34,7 +34,7 @@ def setup_rbac():
     # 3. HR Admin Group (Financials & Payroll)
     # Scope: Payroll, Loans, Taxation, Reimbursements
     hr_group, _ = Group.objects.get_or_create(name='HR Admins')
-    hr_apps = ['pay_roll', 'loans', 'taxation', 'reimbursements', 'payroll_processing']
+    hr_apps = ['salary', 'loans', 'taxation', 'reimbursements', 'payroll_processing']
     hr_perms = Permission.objects.filter(content_type__app_label__in=hr_apps)
     hr_group.permissions.set(hr_perms)
     print("HR Admin group created/updated (Payroll, Loans, Tax, Claims).")

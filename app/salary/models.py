@@ -126,8 +126,6 @@ class PayrollFormula(models.Model):
     def __str__(self):
         return self.name
 
-# Create your models here.
-
 
 class SalaryStructureComponentMapping(models.Model):
     CALC_TYPES = (

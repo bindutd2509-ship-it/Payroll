@@ -67,7 +67,7 @@ class Migration(migrations.Migration):
                 ('effective_from', models.DateField()),
                 ('effective_to', models.DateField(blank=True, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('salary_structure', models.ForeignKey(db_column='salary_structure_id', on_delete=django.db.models.deletion.CASCADE, related_name='versions', to='pay_roll.salarystructure')),
+                ('salary_structure', models.ForeignKey(db_column='salary_structure_id', on_delete=django.db.models.deletion.CASCADE, related_name='versions', to='salary.salarystructure')),
             ],
             options={
                 'db_table': 'salary_structure_versions',
@@ -82,9 +82,9 @@ class Migration(migrations.Migration):
                 ('value', models.DecimalField(blank=True, decimal_places=2, max_digits=12, null=True)),
                 ('display_order', models.IntegerField(default=0)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('formula', models.ForeignKey(blank=True, db_column='formula_id', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='structure_mappings', to='pay_roll.payrollformula')),
-                ('salary_component', models.ForeignKey(db_column='salary_component_id', on_delete=django.db.models.deletion.CASCADE, related_name='structure_mappings', to='pay_roll.salarycomponent')),
-                ('salary_structure_version', models.ForeignKey(db_column='salary_structure_version_id', on_delete=django.db.models.deletion.CASCADE, related_name='component_mappings', to='pay_roll.salarystructureversion')),
+                ('formula', models.ForeignKey(blank=True, db_column='formula_id', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='structure_mappings', to='salary.payrollformula')),
+                ('salary_component', models.ForeignKey(db_column='salary_component_id', on_delete=django.db.models.deletion.CASCADE, related_name='structure_mappings', to='salary.salarycomponent')),
+                ('salary_structure_version', models.ForeignKey(db_column='salary_structure_version_id', on_delete=django.db.models.deletion.CASCADE, related_name='component_mappings', to='salary.salarystructureversion')),
             ],
             options={
                 'db_table': 'salary_structure_component_mappings',

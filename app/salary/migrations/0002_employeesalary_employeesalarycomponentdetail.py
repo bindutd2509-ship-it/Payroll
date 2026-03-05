@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('employees', '0002_initial'),
-        ('pay_roll', '0001_initial'),
+        ('salary', '0001_initial'),
     ]
 
     operations = [
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('employee', models.OneToOneField(db_column='employee_id', on_delete=django.db.models.deletion.CASCADE, related_name='salary_config', to='employees.employee')),
-                ('salary_structure_version', models.ForeignKey(db_column='salary_structure_version_id', on_delete=django.db.models.deletion.PROTECT, related_name='employee_salaries', to='pay_roll.salarystructureversion')),
+                ('salary_structure_version', models.ForeignKey(db_column='salary_structure_version_id', on_delete=django.db.models.deletion.PROTECT, related_name='employee_salaries', to='salary.salarystructureversion')),
             ],
             options={
                 'verbose_name_plural': 'Employee Salaries',
@@ -33,8 +33,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
                 ('amount', models.DecimalField(decimal_places=2, max_digits=12)),
-                ('employee_salary', models.ForeignKey(db_column='employee_salary_id', on_delete=django.db.models.deletion.CASCADE, related_name='components', to='pay_roll.employeesalary')),
-                ('salary_component', models.ForeignKey(db_column='salary_component_id', on_delete=django.db.models.deletion.CASCADE, to='pay_roll.salarycomponent')),
+                ('employee_salary', models.ForeignKey(db_column='employee_salary_id', on_delete=django.db.models.deletion.CASCADE, related_name='components', to='salary.employeesalary')),
+                ('salary_component', models.ForeignKey(db_column='salary_component_id', on_delete=django.db.models.deletion.CASCADE, to='salary.salarycomponent')),
             ],
             options={
                 'db_table': 'employee_salary_component_details',
